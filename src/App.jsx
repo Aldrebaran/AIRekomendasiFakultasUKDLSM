@@ -38,12 +38,17 @@ const InputArea = ({ input, setInput, sendMessage, isLoading }) => (
   <div className="fixed bottom-0 left-0 w-full bg-white p-4 border-t shadow-[0_-4px_10px_rgba(0,0,0,0.05)] z-40">
     <div className="max-w-5xl mx-auto flex items-center gap-2 border border-gray-300 rounded-full p-1 bg-gray-50 focus-within:border-[#109060] focus-within:ring-2 focus-within:ring-[#109060]/20 transition-all duration-300">
       <input 
-        type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-        placeholder="Ketik Jawaban Anda di sini..."
-        className="flex-1 bg-transparent px-4 py-2 text-gray-700 focus:outline-none placeholder:text-gray-400"
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+          }
+        }}
+        placeholder="Ceritakan minat, bakat, atau bidang yang kamu sukai..."
+        rows={1}
+        className="flex-1 bg-transparent px-4 py-2 text-gray-700 focus:outline-none placeholder:text-gray-400 resize-none overflow-y-auto max-h-32 min-h-10"
         disabled={isLoading}
       />
       <button 
