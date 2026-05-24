@@ -37,7 +37,7 @@ const Header = ({ onAdminClick, isAdminLoggedIn, onLogout }) => (
 const InputArea = ({ input, setInput, sendMessage, isLoading }) => (
   <div className="fixed bottom-0 left-0 w-full bg-white p-4 border-t shadow-[0_-4px_10px_rgba(0,0,0,0.05)] z-40">
     <div className="max-w-5xl mx-auto flex items-center gap-2 border border-gray-300 rounded-full p-1 bg-gray-50 focus-within:border-[#109060] focus-within:ring-2 focus-within:ring-[#109060]/20 transition-all duration-300">
-      <input 
+      <textarea 
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={(e) => {
